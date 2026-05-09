@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belitung Island - Paradise Awaits</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --light-blue: #e3f2fd;
+            --blue-primary: #2196f3;
+            --blue-dark: #1976d2;
+            --blue-light: #bbdefb;
+            --shadow: 0 10px 30px rgba(33, 150, 243, 0.2);
+            --shadow-hover: 0 20px 40px rgba(33, 150, 243, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* OOP: Base Component Class Styles */
+        .component {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .component.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--blue-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--blue-primary);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23e3f2fd" width="1200" height="800"/><path fill="%23bbdefb" d="M0 400Q300 200 600 400T1200 400V800H0z"/><circle fill="%232196f3" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%231976d2" opacity="0.2" cx="1000" cy="250" r="80"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33,150,243,0.8) 0%, rgba(25,118,210,0.6) 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Attractions Grid */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .attraction-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            height: 450px;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .attraction-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Placeholder images - Replace with your photos */
+        .beach-1 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><rect fill="%23a8e6cf" width="400" height="250"/><path fill="%238bc6b0" d="M0 180Q100 140 200 180T400 180V250H0z"/><circle fill="%2375b79e" cx="100" cy="100" r="40"/><circle fill="%2365a080" cx="300" cy="80" r="30"/></svg>'); }
+        .beach-2 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><rect fill="%23ffcc80" width="400" height="250"/><path fill="%23ffb74d" d="M0 200Q150 160 300 200T400 200V250H0z"/><circle fill="%23ffa726" cx="80" cy="120" r="25"/><circle fill="%23ff9800" cx="320" cy="100" r="20"/></svg>'); }
+        .nature-1 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><rect fill="%234caf50" width="400" height="250"/><path fill="%23387e41" d="M0 150Q200 100 400 150V250H0z"/><circle fill="%2366bb6a" cx="150" cy="80" r="30"/><circle fill="%234caf50" cx="350" cy="60" r="25"/></svg>'); }
+        .zoo-1 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><rect fill="%239c27b0" width="400" height="250"/><circle fill="%23ab47bc" cx="100" cy="100" r="40"/><circle fill="%238e24aa" cx="300" cy="80" r="35"/><path fill="%23ce93d8" d="M150 180Q200 160 250 180Q300 160 350 180"/></svg>'); }
+        .nature-2 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><rect fill="%232e7d32" width="400" height="250"/><path fill="%231b5e20" d="M0 140Q100 100 200 140T400 140V250H0z"/><circle fill="%2344a084" cx="250" cy="70" r="35"/></svg>'); }
+        .beach-3 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250"><rect fill="%2300bcd4" width="400" height="250"/><path fill="%2300acc1" d="M0 190Q120 150 240 190T400 190V250H0z"/><circle fill="%2326c6da" cx="180" cy="110" r="30"/></svg>'); }
+
+        .attraction-content {
+            padding: 2rem;
+        }
+
+        .attraction-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--blue-dark);
+        }
+
+        .attraction-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .attraction-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background: var(--light-blue);
+            color: var(--blue-primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+            color: white;
+            text-align: center;
+            padding: 100px 5%;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f8f9fa;
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            color: #666;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h4 {
+            color: var(--blue-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--blue-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(33, 150, 243, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: var(--blue-primary);
+            transition: 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .attractions-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">Belitung Paradise</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#attractions">Attractions</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#booking" class="cta-button">Book Now</a>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero component" id="home">
+        <div class="hero-content">
+            <h1>Discover Belitung<br><span class="float">Island Paradise</span></h1>
+            <p>Experience pristine beaches, lush nature tours, exotic wildlife, and unforgettable adventures in one of Indonesia's hidden gems.</p>
+            <a href="#attractions" class="cta-button" style="font-size: 1.2rem; padding: 18px 40px;">
+                Explore Attractions <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section class="section" id="attractions">
+        <h2 class="section-title component">Top Attractions</h2>
+        <div class="attractions-grid">
+            <div class="attraction-card component">
+                <div class="attraction-image beach-1"></div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Tanjung Tinggi Beach</h3>
+                    <p class="attraction-desc">Iconic beach with massive granite boulders and crystal-clear turquoise waters. Perfect for photography and relaxation.</p>
+                    <div class="attraction-features">
+                        <span class="feature-tag"><i class="fas fa-swimmer"></i> Swimming</span>
+                        <span class="feature-tag"><i class="fas fa-camera"></i> Photo Spot</span>
+                        <span class="feature-tag"><i class="fas fa-sun"></i> Sunset</span>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card component">
+                <div class="attraction-image beach-2"></div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Pantai Penyabong</h3>
+                    <p class="attraction-desc">Secluded white sand beach with gentle waves and stunning coastal views. Ideal for peaceful getaways.</p>
+                    <div class="attraction-features">
+                        <span class="feature-tag"><i class="fas fa-umbrella-beach"></i> Relaxation</span>
+                        <span class="feature-tag"><i class="fas fa-star"></i> 5★ Rated</span>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card component">
+                <div class="attraction-image nature-1"></div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Greweng Waterfall</h3>
+                    <p class="attraction-desc">Breathtaking waterfall surrounded by lush jungle. Perfect for nature lovers and adventure seekers.</p>
+                    <div class="attraction-features">
+                        <span class="feature-tag"><i class="fas fa-hiking"></i> Trekking</span>
+                        <span class="feature-tag"><i class="fas fa-swimming-pool"></i> Swimming</span>
+                        <span class="feature-tag"><i class="fas fa-leaf"></i> Nature</span>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card component">
+                <div class="attraction-image zoo-1"></div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Belitung Zoo</h3>
+                    <p class="attraction-desc">Meet exotic wildlife in a beautiful natural habitat. Family-friendly with educational programs.</p>
+                    <div class="attraction-features">
+                        <span class="feature-tag"><i class="fas fa-child"></i> Family</span>
+                        <span class="feature-tag"><i class="fas fa-paw"></i> Animals</span>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card component">
+                <div class="attraction-image nature-2"></div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Kawah Perabu Jungle</h3>
+                    <p class="attraction-desc">Explore dense tropical rainforest with rare flora and guided eco-tours available daily.</p>
+                    <div class="attraction-features">
+                        <span class="feature-tag"><i class="fas fa-binoculars"></i> Birdwatching</span>
+                        <span class="feature-tag"><i class="fas fa-tree"></i> Eco Tour</span>
+                    </div>
+                </div>
+            </div>
+            <div class="attraction-card component">
+                <div class="attraction-image beach-3"></div>
+                <div class="attraction-content">
+                    <h3 class="attraction-title">Laskar Pelangi Beach</h3>
+                    <p class="attraction-desc">Famous beach from the hit movie with stunning rock formations and vibrant marine life.</p>
+                    <div class="attraction-features">
+                        <span class="feature-tag"><i class="fas fa-fish"></i> Snorkeling</span>
+                        <span class="feature-tag"><i class="fas fa-film"></i> Movie Location</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section">
+        <div class="stats-grid">
+            <div class="stat-item component">
+                <h3>50+</h3>
+                <p>Amazing Beaches</p>
+            </div>
+            <div class="stat-item component">
+                <h3>100K+</h3>
+                <p>Happy Visitors</p>
+            </div>
+            <div class="stat-item component">
+                <h3>24/7</h3>
+                <p>Customer Support</p>
+            </div>
+            <div class="stat-item component">
+                <h3>5★</h3>
+                <p>Rating</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="component">
+            <h2>Ready for Your Adventure?</h2>
+            <p>Book your dream vacation to Belitung Island today and create memories that last a lifetime.</p>
+            <a href="#booking" class="cta-button" style="font-size: 1.3rem; padding: 20px 50px;">
+                Start Planning <i class="fas fa-rocket"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h4>Belitung Paradise</h4>
+                <p>Your gateway to the most beautiful island in Indonesia. Discover, explore, and fall in love.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p><a href="#attractions" style="color: #666; text-decoration: none;">Attractions</a></p>
+                <p><a href="#booking" style="color: #666; text-decoration: none;">Booking</a></p>
+                <p><a href="#contact" style="color: #666; text-decoration: none;">Contact</a></p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>✉️ info@belitungparadise.com</p>
+                <p>📱 +62 812-3456-7890</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 Belitung Paradise. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // OOP Design: Component Base Class
+        class Component {
+            constructor(selector) {
+                this.element = document.querySelector(selector);
+                this.init();
+            }
+
+            init() {
+                this.observe();
+            }
+
+            observe() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(this.element);
+            }
+        }
+
+        // AttractionCard Component
+        class AttractionCard extends Component {
+            constructor(selector) {
+                super(selector);
+                this.card = document.querySelector(selector);
+                this.addHoverEffects();
+            }
+
+            addHoverEffects() {
+                this.card.addEventListener('mouseenter', () => {
+                    this.card.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                this.card.addEventListener('mouseleave', () => {
+                    this.card.style.transform = 'translateY(0) scale(1)';
+                });
+            }
+        }
+
+        // Navigation Component
+        class Navigation {
+            constructor() {
+                this.header = document.getElementById('header');
+                this.navMenu = document.getElementById('navMenu');
+                this.mobileBtn = document.getElementById('mobileMenuBtn');
+                this.init();
+            }
+
+            init() {
+                this.handleScroll();
+                this.handleMobileMenu();
+                this.smoothScroll();
+            }
+
+            handleScroll() {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100) {
+                        this.header.style.background = 'rgba(255, 255, 255, 0.98)';
+                        this.header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+                    } else {
+                        this.header.style.background = 'rgba(255, 255, 255, 0.95)';
+                        this.header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                    }
+                });
+            }
+
+            handleMobileMenu() {
+                this.mobileBtn.addEventListener('click', () => {
+                    this.navMenu.classList.toggle('active');
+                });
+            }
+
+            smoothScroll() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(anchor.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                        this.navMenu.classList.remove('active');
+                    });
+                });
+            }
+        }
+
+        // Initialize all components when DOM loads
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize main navigation
+            new Navigation();
+
+            // Initialize hero section
+            new Component('.hero');
+
+            // Initialize attraction cards
+            document.querySelectorAll('.attraction-card').forEach((card, index) => {
+                new AttractionCard(`.attraction-card:nth-child(${index + 1})`);
+            });
+
+            // Stagger animation for attractions
+            const attractions = document.querySelectorAll('.attractions-grid .component');
+            attractions.forEach((attraction, index) => {
+                attraction.style.transitionDelay = `${index * 0.1}s`;
+            });
+
+            // Parallax effect for hero
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                const speed = scrolled * 0.5;
+                hero.style.transform = `translateY(${speed}px)`;
+            });
+        });
+
+        // Preloader
+        window.addEventListener('load', () => {
+            document.body.style.overflow = 'auto';
+        });
+    </script>
+</body>
+</html>

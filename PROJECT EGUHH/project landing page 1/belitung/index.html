@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belitung Island — Surga Tersembunyi Indonesia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">⛵</span>
+        <span class="logo-text">Belitung<em>Island</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Beranda</a></li>
+        <li><a href="#pantai">Pantai</a></li>
+        <li><a href="#wisata">Wisata</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+      <button class="nav-cta">Rencanakan Perjalanan</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="images/hero_belitung.jpg" alt="Belitung Beach" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Pulau Belitung, Bangka Belitung — Indonesia</p>
+      <h1 class="hero-title reveal">
+        Surga<br /><em>Tersembunyi</em><br />di Lautan Biru
+      </h1>
+      <p class="hero-desc reveal">Temukan keindahan pantai granit ikonik, air kristal toska, dan pesona alam yang tak tertandingi di kepulauan Belitung.</p>
+      <div class="hero-actions reveal">
+        <a href="#pantai" class="btn btn-primary">Jelajahi Sekarang</a>
+        <a href="#wisata" class="btn btn-ghost">Lihat Wisata</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-dot"></div>
+      <span>Scroll</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card reveal">
+        <span class="stat-number">47+</span>
+        <span class="stat-label">Destinasi Wisata</span>
+      </div>
+      <div class="stat-card reveal">
+        <span class="stat-number">98%</span>
+        <span class="stat-label">Kepuasan Wisatawan</span>
+      </div>
+      <div class="stat-card reveal">
+        <span class="stat-number">12+</span>
+        <span class="stat-label">Pulau Eksotis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-text reveal">
+          <span class="section-tag">Mengapa Belitung?</span>
+          <h2>Keajaiban Alam yang<br /><em>Tak Terlupakan</em></h2>
+          <p>Belitung adalah kepulauan tropis yang terkenal dengan bebatuan granit raksasa, pantai berpasir putih bersih, dan air laut jernih berwarna toska. Dikenal lewat film Laskar Pelangi, pulau ini kini menjadi destinasi favorit wisatawan nusantara dan mancanegara.</p>
+          <a href="#pantai" class="btn btn-outline">Lihat Destinasi</a>
+        </div>
+        <div class="intro-images reveal">
+          <div class="img-collage">
+            <img src="images/kepayang_island.jpg" alt="Pulau Kepayang dari udara" class="collage-main" />
+            <img src="images/tanjung_kelayang.jpg" alt="Pantai Tanjung Kelayang" class="collage-sm top" />
+            <img src="images/kaolin_lake.jpg" alt="Danau Kaolin Belitung" class="collage-sm bot" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEACHES -->
+  <section class="beaches-section" id="pantai">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Pantai</span>
+        <h2>Pantai-Pantai<br /><em>Ikonik</em> Belitung</h2>
+        <p>Dari bebatuan granit hingga pasir putih, setiap pantai menawarkan pemandangan yang berbeda namun sama-sama memukau.</p>
+      </div>
+      <div class="cards-grid" id="beachCards"></div>
+    </div>
+  </section>
+
+  <!-- NATURE TOURS -->
+  <section class="nature-section" id="wisata">
+    <div class="nature-bg">
+      <img src="images/mangrove_harapan.jpg" alt="Mangrove Belitung" />
+      <div class="nature-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="section-header reveal" style="color:#fff;">
+        <span class="section-tag" style="color:#7dd3fc; border-color:#7dd3fc;">Wisata Alam</span>
+        <h2 style="color:#fff;">Petualangan Alam<br /><em style="color:#93c5fd;">Tak Terbatas</em></h2>
+        <p style="color:rgba(255,255,255,0.8);">Dari hutan mangrove hingga kebun binatang, jelajahi kekayaan alam Belitung yang menakjubkan.</p>
+      </div>
+      <div class="nature-cards" id="natureCards"></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="galeri">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Galeri</span>
+        <h2>Keindahan yang<br /><em>Menakjubkan</em></h2>
+      </div>
+      <div class="gallery-masonry" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- TRAVEL TIPS -->
+  <section class="tips-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Tips Perjalanan</span>
+        <h2>Panduan <em>Wisatawan</em></h2>
+      </div>
+      <div class="tips-grid" id="tipsGrid"></div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-bg">
+      <img src="images/hero_belitung.jpg" alt="Belitung aerial view" />
+      <div class="cta-overlay"></div>
+    </div>
+    <div class="container cta-content">
+      <div class="cta-text reveal">
+        <h2>Siap Memulai<br /><em>Petualangan?</em></h2>
+        <p>Pesan paket wisata Belitung Anda sekarang dan dapatkan pengalaman liburan yang tak terlupakan bersama orang-orang terkasih.</p>
+        <div class="cta-actions">
+          <a href="#kontak" class="btn btn-white">Hubungi Kami</a>
+          <a href="#pantai" class="btn btn-ghost-white">Lihat Paket</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="kontak">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-tag">Kontak</span>
+          <h2>Mari <em>Terhubung</em></h2>
+          <p>Kami siap membantu Anda merencanakan perjalanan impian ke Belitung. Hubungi kami kapan saja!</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <strong>Alamat</strong>
+                <p>Jl. Sriwijaya No. 1, Tanjung Pandan, Belitung 33412</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <div>
+                <strong>Telepon</strong>
+                <p>+62 719 22001</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <div>
+                <strong>Email</strong>
+                <p>hello@belitungisland.id</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" placeholder="Nama Anda" required />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="email@anda.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Destinasi yang Diminati</label>
+              <select>
+                <option>Pilih destinasi...</option>
+                <option>Pantai Tanjung Kelayang</option>
+                <option>Pantai Tanjung Tinggi</option>
+                <option>Pulau Lengkuas</option>
+                <option>Mangrove Tour</option>
+                <option>Paket Lengkap</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Pesan</label>
+              <textarea placeholder="Ceritakan rencana perjalanan Anda..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary full-width">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-icon">⛵</span>
+            <span class="logo-text">Belitung<em>Island</em></span>
+          </a>
+          <p>Destinasi wisata terbaik di Kepulauan Bangka Belitung. Kami hadir untuk membuat perjalanan Anda sempurna.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Destinasi</h4>
+          <ul>
+            <li><a href="#">Tanjung Kelayang</a></li>
+            <li><a href="#">Tanjung Tinggi</a></li>
+            <li><a href="#">Pulau Lengkuas</a></li>
+            <li><a href="#">Pantai Punai</a></li>
+            <li><a href="#">Pulau Pasir</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Wisata</h4>
+          <ul>
+            <li><a href="#">Snorkeling & Diving</a></li>
+            <li><a href="#">Island Hopping</a></li>
+            <li><a href="#">Mangrove Tour</a></li>
+            <li><a href="#">Kebun Binatang</a></li>
+            <li><a href="#">Kuliner Lokal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Informasi</h4>
+          <ul>
+            <li><a href="#">Cara ke Belitung</a></li>
+            <li><a href="#">Akomodasi</a></li>
+            <li><a href="#">Cuaca & Musim</a></li>
+            <li><a href="#">Tips Wisata</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Belitung Island Tourism. Semua hak dilindungi.</p>
+        <p>Dibuat dengan ❤️ untuk keindahan Belitung</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
